@@ -71,25 +71,87 @@
         <div class="col-12 col-lg-8">
             <pre class="line-numbers">
                 <code class="language-js">
-function displayMessage() {
-    let msg = document.getElementById('message').value;
-    // alert(msg);
+// Controller
+function getValues() {
+  let alertbox = document.getElementById("alert");
+  alertbox.classList.remove("alert-success");
+  alertbox.classList.remove("alert-danger");
+  alertbox.classList.add("d-none");
+  // get the user's input
+  // decide what to do with it
+  let userInput = document.getElementById("phrase").value;
 
-    Swal.fire(
-        {
-            backdrop: false,
-            title: 'App Name',
-            text: msg
-        }
-    );
+  userInput = userInput.toLowerCase();
+  let reversedInput = userInput.split("").reverse().join("");
+  userInput = userInput.replace(" ", "");
+  const regex = /[^a-z0-9]/gi;
+  userInput = userInput.replace(regex, "");
+
+  if (userInput.length > 0) {
+    let isPalindrome = checkForPalindrome(userInput);
+    displayResults(reversedInput, isPalindrome);
+  } else {
+    Swal.fire({
+      icon: "error",
+      backdrop: false,
+      title: "Oops...",
+      text: "Enter a valid phrase",
+    });
+  }
 }
+
+// Business logic
+function checkForPalindrome(userInput) {
+  let reversedInput = userInput.split("").reverse().join("");
+
+  let isPalindrome = reversedInput == userInput;
+
+  return isPalindrome;
+}
+
+// View
+function displayResults(reversedInput, isPalindrome) {
+  // show string on page
+
+  let resultMessage = "";
+
+  let alertBox = document.getElementById("alert");
+  let alertClass = isPalindrome == true ? "alert-success" : "alert-danger";
+  alertBox.classList.add(alertClass);
+
+  if (isPalindrome == true) {
+    resultMessage = "Your phrase reversed is " + reversedInput;
+    resultHeader = "Your phrase is a palindrome!";
+  } else {
+    resultMessage = "Your phrase reversed is " + reversedInput;
+    resultHeader = "Your phrase is not a palindrome!";
+  }
+
+  document.getElementById("header").textContent = resultHeader;
+  document.getElementById("msg").textContent = resultMessage;
+  alertBox.classList.remove("d-none");
+}
+
+// id = "phrase";
+// id = "btnSubmit";
+// id = "alertPass";
+// id = "alertFail";
+
                 </code>
             </pre>
         </div>
         <div class="col-12 col-lg-4">
-            <p>the code is structed in one function</p>
-            <h5>displayMessage</h5>
-            <p>Prints out the message</p>
+          <p>the code is structed in three functions</p>
+          <h5>
+            <ul>
+              <li>getValues</li>
+              <li>checkForPalindrome</li>
+              <li>displayResults</li>
+            </ul>
+          </h5>
+          <p>
+            First we have getValues, this function gets called when the "check my phrase!" button is clicked and gets what is typed into the text box and stores it in the function, it also removes spaces and sybols from the user's phrase so that punctuations won't be counted when being tested. Lastly it reversed the inputed phrase without any spaces or punctuations.</p> Next the checkForPalindrome gets the original phrase and creates a variable for the reversed phrase and compares them returning a true or false value. <p><br>That true or false value gets used by the displayResults to add the user's reversed input and tell you whether it is or isn't a palindrome and changes the color of the alert to green or red depending on whether your phrase is a valid palindrome. 
+          </p>
         </div>
     </div>
 </main>

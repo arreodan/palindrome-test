@@ -1,52 +1,63 @@
 // Controller
 function getValues() {
+  let alertbox = document.getElementById("alert");
+  alertbox.classList.remove("alert-success");
+  alertbox.classList.remove("alert-danger");
+  alertbox.classList.add("d-none");
   // get the user's input
   // decide what to do with it
   let userInput = document.getElementById("phrase").value;
+
+  userInput = userInput.toLowerCase();
   let reversedInput = userInput.split("").reverse().join("");
+  userInput = userInput.replace(" ", "");
+  const regex = /[^a-z0-9]/gi;
+  userInput = userInput.replace(regex, "");
 
-
-  let testedInput = checkForPalindrome(userInput, reversedInput);
-
-  displayResults(testedInput, reversedInput);
+  if (userInput.length > 0) {
+    let isPalindrome = checkForPalindrome(userInput);
+    displayResults(reversedInput, isPalindrome);
+  } else {
+    Swal.fire({
+      icon: "error",
+      backdrop: false,
+      title: "Oops...",
+      text: "Enter a valid phrase",
+    });
+  }
 }
 
 // Business logic
-function checkForPalindrome(userInput, reversedInput) {
+function checkForPalindrome(userInput) {
+  let reversedInput = userInput.split("").reverse().join("");
 
-  let reversedMessage = "";
-  // reversedMessage = message.split('').reverse().join('');
-  for (let index = 0; index <= userInput.length; index = index + 1) {
-    if(userInput[index] == reversedInput[index]){
-      return reversedInput;
-    } else {
-      return /*reversedInput,*/ false;
-    }
-  }
+  let isPalindrome = reversedInput == userInput;
 
-  return reversedMessage;
+  return isPalindrome;
 }
 
 // View
-function displayResults(testedInput) {
+function displayResults(reversedInput, isPalindrome) {
   // show string on page
-  if (testedInput) {
-    document.getElementById("msg").textContent = testedInput;
-    document.getElementById("alertPass").classList.remove("d-none");
+
+  let resultMessage = "";
+
+  let alertBox = document.getElementById("alert");
+  let alertClass = isPalindrome == true ? "alert-success" : "alert-danger";
+  alertBox.classList.add(alertClass);
+
+  if (isPalindrome == true) {
+    resultMessage = "Your phrase reversed is " + reversedInput;
+    resultHeader = "Your phrase is a palindrome!";
   } else {
-    document.getElementById("msg").textContent = testedInput;
-    document.getElementById("alertFail").classList.remove("d-none");
+    resultMessage = "Your phrase reversed is " + reversedInput;
+    resultHeader = "Your phrase is not a palindrome!";
   }
+
+  document.getElementById("header").textContent = resultHeader;
+  document.getElementById("msg").textContent = resultMessage;
+  alertBox.classList.remove("d-none");
 }
-
-// Swal.fire(
-//     {
-//         backdrop: false,
-//         title: 'App Name',
-//         text: msg
-//     }
-// );
-
 
 // id = "phrase";
 // id = "btnSubmit";
