@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App Name: A coding challenge by Daniel Arreola</title>
+    <title>Word Warp - Live App</title>
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,13 +34,19 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="/img/LogoNoMargin.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
         <div class="container">
           <a class="navbar-brand" href="/index.html">
-            <img src="/img/LogoNoMargin.png" alt="" height="50" />
+            <img src="/img/LogoNoMargin.png" alt="" height="65" />
           </a>
           <button
             class="navbar-toggler"
@@ -67,19 +73,29 @@
                 <a class="nav-link" href="/code.html">Code</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://github.com/arreodan/palindrome-test" target="_blank">Repo</a>
+                <a
+                  class="nav-link"
+                  href="https://github.com/arreodan/palindrome-test"
+                  target="_blank"
+                  >Repo</a
+                >
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  href="https://danielarreola.netlify.app"
+                  href="https://danielarreola.dev"
                   target="_blank"
                   >Portfolio</a
                 >
               </li>
               <li class="nav-item">
                 <!-- Link blog when I have one -->
-                <a class="nav-link" href="#">Blog</a>
+                <a
+                  target="_blank"
+                  class="nav-link"
+                  href="https://blogdanielarreola-production.up.railway.app/"
+                  >Blog</a
+                >
               </li>
             </ul>
           </div>
@@ -99,7 +115,11 @@
         <button class="btn btn-dark mt-2 btn-lg" id="btnSubmit">
           Test my phrase!
         </button>
-        <div class="alert alert-success mt-5 w-50 m-center d-none" id="alert" role="alert">
+        <div
+          class="alert alert-success mt-5 w-50 m-center d-none"
+          id="alert"
+          role="alert"
+        >
           <h4 class="alert-heading" id="header"></h4>
           <hr />
           <p class="mb-0" id="msg"></p>
@@ -107,23 +127,29 @@
       </div>
     </main>
 
-<footer>
-<div class="container py-4">
-    <div class="row row-cols-1 row-cols-lg-3 align-items-center g-3">
-        <div class="col text-center text-lg-start">
+    <footer>
+      <div class="container py-4">
+        <div class="row row-cols-1 row-cols-lg-3 align-items-center g-3">
+          <div class="col text-center text-lg-start">
             &copy; 2023 Daniel Arreola
+          </div>
+          <div class="col text-center">
+            <img src="/img/LogoWTextnomargin.png" alt="" height="65" />
+          </div>
+          <div class="col text-center text-lg-end">
+            <a href="https://www.linkedin.com/in/arreoda/" target="_blank"
+              ><i class="bi bi-linkedin socialicons"></i
+            ></a>
+            <a href="https://github.com/arreodan" target="_blank"
+              ><i class="bi bi-github socialicons"></i
+            ></a>
+            <a href="https://danielarreola.dev" target="_blank"
+              ><i class="bi bi-file-earmark-person socialicons"></i
+            ></a>
+          </div>
         </div>
-        <div class="col text-center">
-            <img src="/img/LogoWTextnomargin.png" alt="" height="60">
-        </div>
-        <div class="col text-center text-lg-end">
-            <a href="https://www.linkedin.com/in/arreoda/" target="_blank"><i class="bi bi-linkedin socialicons"></i></a>
-            <a href="https://github.com/arreodan" target="_blank"><i class="bi bi-github socialicons"></i></a>
-            <a href="" target="_blank"><i class="bi bi-file-earmark-person socialicons"></i></a>
-        </div>
-    </div>
-</div>
-</footer>
+      </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script
